@@ -48,6 +48,20 @@ app.use('/member', require('./routes/member'));
 app.use('/admin', require('./routes/admin'));
 
 const PORT = process.env.PORT || 3001;
+
+// Handle production environment
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+  app.use(session({
+    secret: process.env.SESSION_SECRET || 'sor-secret-key',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: true,
+      maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    }
+  }));
+}
 app.listen(PORT, () => {
   console.log(`Sound of Revival system running on port ${PORT}`);
 });
