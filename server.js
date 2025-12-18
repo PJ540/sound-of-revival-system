@@ -12,8 +12,16 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+// Serve uploads directory
 app.use('/uploads', express.static('uploads'));
+
+// Only serve public directory in production for static assets
+if (process.env.NODE_ENV === 'production' && process.env.STATIC_ONLY === 'true') {
+  app.use(express.static('public'));
+} else {
+  // Serve static assets from public directory but not index.html
+  app.use('/assets', express.static('public'));
+}
 app.use(session({
   secret: process.env.SESSION_SECRET || 'sor-secret-key',
   resave: false,
