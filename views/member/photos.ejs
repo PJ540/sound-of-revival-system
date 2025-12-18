@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - Sound of Revival</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .navbar-brand { font-weight: bold; color: #8B4513 !important; }
+        .btn-primary { background-color: #8B4513; border-color: #8B4513; }
+        .btn-primary:hover { background-color: #A0522D; border-color: #A0522D; }
+        .text-primary { color: #8B4513 !important; }
+        .bg-primary { background-color: #8B4513 !important; }
+        .photo-card { 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            cursor: pointer;
+        }
+        .photo-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .photo-img {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+        }
+        .category-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 20px 15px 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .photo-card:hover .photo-overlay {
+            opacity: 1;
+        }
+        .filter-buttons {
+            margin-bottom: 30px;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 80%;
+            margin-top: 5%;
+        }
+        .close-lightbox {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-music me-2"></i>Sound of Revival
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/departments">Departments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/photos">Photos</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-1"></i><%= user.firstName %>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <% if (user.role === 'admin') { %>
+                                <li><a class="dropdown-item" href="/admin/dashboard">Admin Dashboard</a></li>
+                            <% } else { %>
+                                <li><a class="dropdown-item" href="/member/dashboard">Dashboard</a></li>
+                            <% } %>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/auth/logout">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4">
+                        <i class="fas fa-camera me-3"></i>Photo Gallery
+                    </h1>
+                    <p class="lead mb-0">Capturing moments of worship, fellowship, and ministry at Sound of Revival</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fas fa-images" style="font-size: 120px; opacity: 0.3;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container py-5">
+        <% if (photos.length > 0) { %>
+            <!-- Filter Buttons -->
+            <div class="filter-buttons text-center">
+                <button class="btn btn-outline-primary me-2 filter-btn active" data-filter="all">All Photos</button>
+                <button class="btn btn-outline-primary me-2 filter-btn" data-filter="worship">Worship</button>
+                <button class="btn btn-outline-primary me-2 filter-btn" data-filter="events">Events</button>
+                <button class="btn btn-outline-primary me-2 filter-btn" data-filter="fellowship">Fellowship</button>
+                <button class="btn btn-outline-primary me-2 filter-btn" data-filter="ministry">Ministry</button>
+                <button class="btn btn-outline-primary filter-btn" data-filter="other">Other</button>
+            </div>
+
+            <!-- Photo Grid -->
+            <div class="row" id="photoGrid">
+                <% photos.forEach(photo => { %>
+                    <div class="col-lg-4 col-md-6 mb-4 photo-item" data-category="<%= photo.category %>">
+                        <div class="card photo-card border-0 shadow-sm position-relative" onclick="openLightbox('<%= photo.path %>', '<%= photo.title %>', '<%= photo.description %>')">
+                            <span class="badge bg-secondary category-badge"><%= photo.category %></span>
+                            <img src="<%= photo.path %>" class="photo-img" alt="<%= photo.title %>">
+                            <div class="photo-overlay">
+                                <h5 class="mb-2"><%= photo.title %></h5>
+                                <% if (photo.description) { %>
+                                    <p class="mb-2 small"><%= photo.description %></p>
+                                <% } %>
+                                <small>
+                                    <i class="fas fa-user me-1"></i>
+                                    <%= photo.uploadedBy.firstName %> <%= photo.uploadedBy.lastName %>
+                                    <span class="ms-2">
+                                        <i class="fas fa-calendar me-1"></i>
+                                        <%= new Date(photo.uploadDate).toLocaleDateString() %>
+                                    </span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+
+            <!-- Photo Count -->
+            <div class="text-center mt-4">
+                <p class="text-muted">
+                    <i class="fas fa-images me-2"></i>
+                    Showing <span id="photoCount"><%= photos.length %></span> photos
+                </p>
+            </div>
+        <% } else { %>
+            <!-- No Photos Message -->
+            <div class="text-center py-5">
+                <i class="fas fa-camera fa-4x text-muted mb-4"></i>
+                <h3 class="text-muted mb-3">No Photos Yet</h3>
+                <p class="text-muted mb-4">Our photo gallery is being prepared. Check back soon to see beautiful moments from our ministry!</p>
+                <% if (user && user.role === 'admin') { %>
+                    <a href="/admin/photos" class="btn btn-primary">
+                        <i class="fas fa-upload me-2"></i>Upload First Photo
+                    </a>
+                <% } %>
+            </div>
+        <% } %>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+        <div class="text-center mt-3">
+            <h4 id="lightboxTitle" class="text-white"></h4>
+            <p id="lightboxDescription" class="text-white"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5 py-4" style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-music me-2"></i>Sound of Revival</h5>
+                    <p class="mb-2">Serving God through music and fellowship</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-1">&copy; 2024 Sound of Revival. All rights reserved.</p>
+                    <p class="mb-0 small text-white-50">
+                        <i class="fas fa-code me-1"></i>Designed by <strong>Peter J</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                const photoItems = document.querySelectorAll('.photo-item');
+                let visibleCount = 0;
+                
+                photoItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                document.getElementById('photoCount').textContent = visibleCount;
+            });
+        });
+
+        // Lightbox functionality
+        function openLightbox(src, title, description) {
+            document.getElementById('lightbox').style.display = 'block';
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxTitle').textContent = title;
+            document.getElementById('lightboxDescription').textContent = description;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

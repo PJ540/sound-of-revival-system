@@ -1,0 +1,2525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound of Revival - Band</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --dark-gold: #B8941F;
+            --light-gold: #F2E6C9;
+            --white: #FFFFFF;
+            --off-white: #F9F9F9;
+            --gray: #E0E0E0;
+            --dark-gray: #333333;
+            --success: #4CAF50;
+            --error: #F44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
+
+        .logo h1 {
+            color: var(--primary-gold);
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-gold);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-gold);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-gold);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-gold);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/seed/band/1600/800.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* Mission Vision Section */
+        .mission-vision {
+            padding: 80px 0;
+            background-color: var(--off-white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .mission-vision-content {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .mission, .vision {
+            flex: 1;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .mission h3, .vision h3 {
+            color: var(--primary-gold);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .mission h3 i, .vision h3 i {
+            margin-right: 10px;
+        }
+
+        /* Departments Section */
+        .departments {
+            padding: 80px 0;
+        }
+
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .department-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .department-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .department-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .department-card-content {
+            padding: 25px;
+        }
+
+        .department-card-content h3 {
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+        }
+
+        .department-card-content p {
+            margin-bottom: 20px;
+        }
+
+        /* Registration Section */
+        .registration {
+            padding: 80px 0;
+            background-color: var(--off-white);
+        }
+
+        .registration-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--gray);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        /* Login Section */
+        .login-section {
+            padding: 80px 0;
+        }
+
+        .login-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .login-form h2 {
+            color: var(--primary-gold);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Dashboard Section */
+        .dashboard {
+            padding: 80px 0;
+            background-color: var(--off-white);
+        }
+
+        .dashboard-container {
+            display: flex;
+            gap: 30px;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            height: fit-content;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            display: block;
+            padding: 10px 15px;
+            color: var(--dark-gray);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar ul li a:hover,
+        .sidebar ul li a.active {
+            background-color: var(--light-gold);
+            color: var(--primary-gold);
+        }
+
+        .dashboard-content {
+            flex: 1;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-header h2 {
+            color: var(--primary-gold);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: var(--light-gold);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            color: var(--dark-gray);
+        }
+
+        .members-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .members-table th,
+        .members-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .members-table th {
+            background-color: var(--light-gold);
+            color: var(--primary-gold);
+        }
+
+        .members-table tr:hover {
+            background-color: var(--off-white);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-buttons button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .edit-btn {
+            background-color: var(--primary-gold);
+            color: var(--white);
+        }
+
+        .delete-btn {
+            background-color: var(--error);
+            color: var(--white);
+        }
+
+        /* Member Dashboard Section */
+        .member-dashboard {
+            padding: 80px 0;
+            background-color: var(--off-white);
+        }
+
+        .member-dashboard-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .member-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: var(--light-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 30px;
+        }
+
+        .member-avatar i {
+            font-size: 3rem;
+            color: var(--primary-gold);
+        }
+
+        .member-details h2 {
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+
+        .member-details p {
+            margin-bottom: 5px;
+        }
+
+        .member-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--off-white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-card-content {
+            padding: 25px;
+        }
+
+        .service-card-content h3 {
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+        }
+
+        .service-card-content p {
+            margin-bottom: 20px;
+        }
+
+        /* Events Section */
+        .events {
+            padding: 80px 0;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .event-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-card-content {
+            padding: 25px;
+        }
+
+        .event-date {
+            display: inline-block;
+            background-color: var(--primary-gold);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .event-card-content h3 {
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+        }
+
+        .event-card-content p {
+            margin-bottom: 20px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--off-white);
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info h3 {
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            color: var(--primary-gold);
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        /* Department Posts Section */
+        .department-posts {
+            padding: 80px 0;
+            background-color: var(--off-white);
+        }
+
+        .posts-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .post-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .post-title {
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+        }
+
+        .post-content {
+            margin-bottom: 15px;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .post-actions button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .edit-post-btn {
+            background-color: var(--primary-gold);
+            color: var(--white);
+        }
+
+        .delete-post-btn {
+            background-color: var(--error);
+            color: var(--white);
+        }
+
+        /* Create Post Section */
+        .create-post {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .create-post h3 {
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background-color: var(--success);
+            color: var(--white);
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s, opacity 0.3s;
+            z-index: 1001;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.error {
+            background-color: var(--error);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-gold);
+            color: var(--white);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--dark-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .mission-vision-content {
+                flex-direction: column;
+            }
+
+            .dashboard-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .contact-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 15px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .form-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .form-actions button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://picsum.photos/seed/logo/60/60.jpg" alt="Sound of Revival Logo">
+                    <h1>Sound of Revival</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#services" class="nav-link">Services</a></li>
+                        <li><a href="#departments" class="nav-link">Departments</a></li>
+                        <li><a href="#events" class="nav-link">Events</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                        <li><a href="#login" class="nav-link btn btn-outline">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Sound of Revival</h2>
+            <p>Spreading the message of hope, love, and revival through music and worship</p>
+            <a href="#register" class="btn">Join Our Band</a>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section id="about" class="mission-vision">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Mission & Vision</h2>
+                <p>We are a band dedicated to spreading the gospel through music and inspiring spiritual revival in our community and beyond.</p>
+            </div>
+            <div class="mission-vision-content">
+                <div class="mission">
+                    <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                    <p>To create a space where people can encounter God through powerful worship music, fostering spiritual growth and community. We aim to lead people into a deeper relationship with God through our music and ministry.</p>
+                </div>
+                <div class="vision">
+                    <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                    <p>To be a catalyst for spiritual revival in our generation, touching lives across nations with the transformative power of worship. We envision a community where worship is not just an activity but a lifestyle that brings hope and healing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We offer various services to help you grow spiritually and connect with our community.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://picsum.photos/seed/worship-service/400/200.jpg" alt="Worship Services">
+                    <div class="service-card-content">
+                        <h3>Worship Services</h3>
+                        <p>Join us every Sunday for powerful worship services where we come together to praise and worship God through music and prayer.</p>
+                        <a href="#events" class="btn">View Schedule</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://picsum.photos/seed/music-workshop/400/200.jpg" alt="Music Workshops">
+                    <div class="service-card-content">
+                        <h3>Music Workshops</h3>
+                        <p>Develop your musical talents through our workshops led by experienced musicians and worship leaders.</p>
+                        <a href="#events" class="btn">View Schedule</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="https://picsum.photos/seed/outreach/400/200.jpg" alt="Community Outreach">
+                    <div class="service-card-content">
+                        <h3>Community Outreach</h3>
+                        <p>We reach out to our community through music, bringing hope and encouragement to those in need.</p>
+                        <a href="#events" class="btn">Get Involved</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section id="departments" class="departments">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Departments</h2>
+                <p>Join one of our departments and become part of our mission to spread revival through music.</p>
+            </div>
+            <div class="departments-grid">
+                <div class="department-card">
+                    <img src="https://picsum.photos/seed/bible/400/200.jpg" alt="Bible Study">
+                    <div class="department-card-content">
+                        <h3>Bible Study</h3>
+                        <p>Deepen your understanding of God's word through our weekly Bible study sessions. We explore scripture together and apply its teachings to our daily lives.</p>
+                        <a href="#department-bible-study" class="btn">View Department</a>
+                    </div>
+                </div>
+                <div class="department-card">
+                    <img src="https://picsum.photos/seed/worship/400/200.jpg" alt="Praise and Worship">
+                    <div class="department-card-content">
+                        <h3>Praise and Worship</h3>
+                        <p>Use your musical talents to lead others into God's presence. Our worship team is at the heart of our ministry, creating an atmosphere of reverence and adoration.</p>
+                        <a href="#department-praise-worship" class="btn">View Department</a>
+                    </div>
+                </div>
+                <div class="department-card">
+                    <img src="https://picsum.photos/seed/prayer/400/200.jpg" alt="Prayer Committee">
+                    <div class="department-card-content">
+                        <h3>Prayer Committee</h3>
+                        <p>Join our dedicated team of intercessors who cover our ministry in prayer. We believe in the power of prayer to transform lives and situations.</p>
+                        <a href="#department-prayer-committee" class="btn">View Department</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events">
+        <div class="container">
+            <div class="section-title">
+                <h2>Upcoming Events</h2>
+                <p>Join us for these upcoming events and be part of our revival movement.</p>
+            </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <img src="https://picsum.photos/seed/concert/400/200.jpg" alt="Revival Concert">
+                    <div class="event-card-content">
+                        <div class="event-date">July 15, 2023</div>
+                        <h3>Revival Concert</h3>
+                        <p>An evening of powerful worship and music featuring our band and special guests. Join us for an unforgettable night of praise.</p>
+                        <a href="#contact" class="btn">RSVP Now</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <img src="https://picsum.photos/seed/workshop/400/200.jpg" alt="Music Workshop">
+                    <div class="event-card-content">
+                        <div class="event-date">July 22, 2023</div>
+                        <h3>Music Workshop</h3>
+                        <p>Learn new techniques and develop your musical skills in this hands-on workshop led by our experienced musicians.</p>
+                        <a href="#contact" class="btn">Register</a>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <img src="https://picsum.photos/seed/prayer-night/400/200.jpg" alt="Prayer Night">
+                    <div class="event-card-content">
+                        <div class="event-date">July 29, 2023</div>
+                        <h3>Prayer Night</h3>
+                        <p>Join us for a special night of prayer and worship as we seek God's guidance and blessing for our community.</p>
+                        <a href="#contact" class="btn">Join Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us to learn more about our ministry or to join our band.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Church Street, City, Country</p>
+                    <p><i class="fas fa-phone"></i> +123 456 7890</p>
+                    <p><i class="fas fa-envelope"></i> info@soundofrevival.com</p>
+                    <p><i class="fas fa-clock"></i> Sunday Services: 9:00 AM - 12:00 PM</p>
+                    <p><i class="fas fa-clock"></i> Office Hours: Monday - Friday, 9:00 AM - 5:00 PM</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName">Your Name</label>
+                            <input type="text" id="contactName" name="contactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Your Email</label>
+                            <input type="email" id="contactEmail" name="contactEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage">Message</label>
+                            <textarea id="contactMessage" name="contactMessage" required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="registration">
+        <div class="container">
+            <div class="section-title">
+                <h2>Join Sound of Revival</h2>
+                <p>Create an account to become part of our band and join one of our departments.</p>
+            </div>
+            <div class="registration-form">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="department">Select Department</label>
+                        <select id="department" name="department" required>
+                            <option value="">-- Select Department --</option>
+                            <option value="bible-study">Bible Study</option>
+                            <option value="praise-worship">Praise and Worship</option>
+                            <option value="prayer-committee">Prayer Committee</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tell us about yourself and why you want to join</label>
+                        <textarea id="message" name="message"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="resetBtn">Reset</button>
+                        <button type="submit" class="btn">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Department Bible Study Section -->
+    <section id="department-bible-study" class="department-posts" style="display: none;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Bible Study Department</h2>
+                <p>Stay updated with the latest announcements and resources from the Bible Study department.</p>
+            </div>
+            <div class="posts-container">
+                <div id="bible-study-posts"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Department Praise and Worship Section -->
+    <section id="department-praise-worship" class="department-posts" style="display: none;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Praise and Worship Department</h2>
+                <p>Stay updated with the latest announcements and resources from the Praise and Worship department.</p>
+            </div>
+            <div class="posts-container">
+                <div id="praise-worship-posts"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Department Prayer Committee Section -->
+    <section id="department-prayer-committee" class="department-posts" style="display: none;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Prayer Committee Department</h2>
+                <p>Stay updated with the latest announcements and resources from the Prayer Committee department.</p>
+            </div>
+            <div class="posts-container">
+                <div id="prayer-committee-posts"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login" class="login-section" style="display: none;">
+        <div class="container">
+            <div class="login-form">
+                <h2>Login to Your Account</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" name="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" name="loginPassword" required>
+                    </div>
+                    <div class="form-actions">
+                        <a href="#register" class="btn btn-outline">Create Account</a>
+                        <button type="submit" class="btn">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Dashboard Section -->
+    <section id="admin-dashboard" class="dashboard" style="display: none;">
+        <div class="container">
+            <div class="dashboard-container">
+                <div class="sidebar">
+                    <ul>
+                        <li><a href="#" class="active" data-section="overview">Overview</a></li>
+                        <li><a href="#" data-section="members">Members</a></li>
+                        <li><a href="#" data-section="departments">Departments</a></li>
+                        <li><a href="#" data-section="posts">Department Posts</a></li>
+                        <li><a href="#" data-section="events">Events</a></li>
+                        <li><a href="#" data-section="settings">Settings</a></li>
+                        <li><a href="#" id="logoutBtn">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="dashboard-content">
+                    <div class="dashboard-header">
+                        <h2>Admin Dashboard</h2>
+                        <button class="btn" id="addMemberBtn">Add New Member</button>
+                    </div>
+                    
+                    <!-- Overview Section -->
+                    <div id="overview-section" class="dashboard-section">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <h3 id="totalMembers">0</h3>
+                                <p>Total Members</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3 id="bibleStudyCount">0</h3>
+                                <p>Bible Study</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3 id="praiseWorshipCount">0</h3>
+                                <p>Praise & Worship</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3 id="prayerCommitteeCount">0</h3>
+                                <p>Prayer Committee</p>
+                            </div>
+                        </div>
+                        <h3>Recent Members</h3>
+                        <table class="members-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Department</th>
+                                    <th>Join Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentMembersTable">
+                                <!-- Table rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Members Section -->
+                    <div id="members-section" class="dashboard-section" style="display: none;">
+                        <h3>All Members</h3>
+                        <table class="members-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Department</th>
+                                    <th>Role</th>
+                                    <th>Join Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="allMembersTable">
+                                <!-- Table rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Departments Section -->
+                    <div id="departments-section" class="dashboard-section" style="display: none;">
+                        <h3>Department Management</h3>
+                        <div class="departments-grid">
+                            <div class="department-card">
+                                <div class="department-card-content">
+                                    <h3>Bible Study</h3>
+                                    <p>Members: <span id="bibleStudyMembers">0</span></p>
+                                    <p>Leader: <span id="bibleStudyLeader">Not assigned</span></p>
+                                    <button class="btn assign-leader-btn" data-department="bible-study">Assign Leader</button>
+                                </div>
+                            </div>
+                            <div class="department-card">
+                                <div class="department-card-content">
+                                    <h3>Praise and Worship</h3>
+                                    <p>Members: <span id="praiseWorshipMembers">0</span></p>
+                                    <p>Leader: <span id="praiseWorshipLeader">Not assigned</span></p>
+                                    <button class="btn assign-leader-btn" data-department="praise-worship">Assign Leader</button>
+                                </div>
+                            </div>
+                            <div class="department-card">
+                                <div class="department-card-content">
+                                    <h3>Prayer Committee</h3>
+                                    <p>Members: <span id="prayerCommitteeMembers">0</span></p>
+                                    <p>Leader: <span id="prayerCommitteeLeader">Not assigned</span></p>
+                                    <button class="btn assign-leader-btn" data-department="prayer-committee">Assign Leader</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Posts Section -->
+                    <div id="posts-section" class="dashboard-section" style="display: none;">
+                        <h3>Department Posts</h3>
+                        <div class="create-post">
+                            <h3>Create New Post</h3>
+                            <form id="createPostForm">
+                                <div class="form-group">
+                                    <label for="postDepartment">Department</label>
+                                    <select id="postDepartment" name="postDepartment" required>
+                                        <option value="">-- Select Department --</option>
+                                        <option value="bible-study">Bible Study</option>
+                                        <option value="praise-worship">Praise and Worship</option>
+                                        <option value="prayer-committee">Prayer Committee</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postTitle">Title</label>
+                                    <input type="text" id="postTitle" name="postTitle" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postContent">Content</label>
+                                    <textarea id="postContent" name="postContent" required></textarea>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn">Create Post</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="allPosts"></div>
+                    </div>
+                    
+                    <!-- Events Section -->
+                    <div id="events-section" class="dashboard-section" style="display: none;">
+                        <h3>Upcoming Events</h3>
+                        <p>Event management features will be available soon.</p>
+                    </div>
+                    
+                    <!-- Settings Section -->
+                    <div id="settings-section" class="dashboard-section" style="display: none;">
+                        <h3>Settings</h3>
+                        <p>Account and system settings will be available soon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Dashboard Section -->
+    <section id="member-dashboard" class="member-dashboard" style="display: none;">
+        <div class="container">
+            <div class="member-dashboard-content">
+                <div class="member-info">
+                    <div class="member-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="member-details">
+                        <h2 id="memberName">Member Name</h2>
+                        <p><i class="fas fa-envelope"></i> <span id="memberEmail">email@example.com</span></p>
+                        <p><i class="fas fa-phone"></i> <span id="memberPhone">+1234567890</span></p>
+                        <p><i class="fas fa-users"></i> Department: <span id="memberDepartment">Department Name</span></p>
+                        <p><i class="fas fa-calendar"></i> Member Since: <span id="memberJoinDate">Join Date</span></p>
+                    </div>
+                </div>
+                <h3>Department Information</h3>
+                <div id="departmentInfo">
+                    <p>Information about your department will be displayed here.</p>
+                </div>
+                <div class="member-actions">
+                    <button class="btn" id="viewDepartmentPostsBtn">View Department Posts</button>
+                    <button class="btn btn-outline" id="logoutMemberBtn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Member Modal -->
+    <div id="addMemberModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Add New Member</h3>
+            <form id="addMemberForm">
+                <div class="form-group">
+                    <label for="newMemberName">Full Name</label>
+                    <input type="text" id="newMemberName" name="newMemberName" required>
+                </div>
+                <div class="form-group">
+                    <label for="newMemberEmail">Email Address</label>
+                    <input type="email" id="newMemberEmail" name="newMemberEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="newMemberPhone">Phone Number</label>
+                    <input type="tel" id="newMemberPhone" name="newMemberPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="newMemberDepartment">Department</label>
+                    <select id="newMemberDepartment" name="newMemberDepartment" required>
+                        <option value="">-- Select Department --</option>
+                        <option value="bible-study">Bible Study</option>
+                        <option value="praise-worship">Praise and Worship</option>
+                        <option value="prayer-committee">Prayer Committee</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="newMemberRole">Role</label>
+                    <select id="newMemberRole" name="newMemberRole">
+                        <option value="member">Member</option>
+                        <option value="department-leader">Department Leader</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="cancelAddMember">Cancel</button>
+                    <button type="submit" class="btn">Add Member</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Member Modal -->
+    <div id="editMemberModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Edit Member</h3>
+            <form id="editMemberForm">
+                <input type="hidden" id="editMemberId" name="editMemberId">
+                <div class="form-group">
+                    <label for="editMemberName">Full Name</label>
+                    <input type="text" id="editMemberName" name="editMemberName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editMemberEmail">Email Address</label>
+                    <input type="email" id="editMemberEmail" name="editMemberEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="editMemberPhone">Phone Number</label>
+                    <input type="tel" id="editMemberPhone" name="editMemberPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="editMemberDepartment">Department</label>
+                    <select id="editMemberDepartment" name="editMemberDepartment" required>
+                        <option value="bible-study">Bible Study</option>
+                        <option value="praise-worship">Praise and Worship</option>
+                        <option value="prayer-committee">Prayer Committee</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editMemberRole">Role</label>
+                    <select id="editMemberRole" name="editMemberRole">
+                        <option value="member">Member</option>
+                        <option value="department-leader">Department Leader</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="cancelEditMember">Cancel</button>
+                    <button type="submit" class="btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Assign Leader Modal -->
+    <div id="assignLeaderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Assign Department Leader</h3>
+            <form id="assignLeaderForm">
+                <input type="hidden" id="leaderDepartment" name="leaderDepartment">
+                <div class="form-group">
+                    <label for="leaderSelect">Select Member</label>
+                    <select id="leaderSelect" name="leaderSelect" required>
+                        <!-- Options will be populated by JavaScript -->
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="cancelAssignLeader">Cancel</button>
+                    <button type="submit" class="btn">Assign Leader</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Post Modal -->
+    <div id="editPostModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Edit Post</h3>
+            <form id="editPostForm">
+                <input type="hidden" id="editPostId" name="editPostId">
+                <div class="form-group">
+                    <label for="editPostTitle">Title</label>
+                    <input type="text" id="editPostTitle" name="editPostTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="editPostContent">Content</label>
+                    <textarea id="editPostContent" name="editPostContent" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="cancelEditPost">Cancel</button>
+                    <button type="submit" class="btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Sound of Revival</h3>
+                    <p>We are a band dedicated to spreading the gospel through music and inspiring spiritual revival in our community and beyond.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home" class="footer-link">Home</a></li>
+                        <li><a href="#about" class="footer-link">About Us</a></li>
+                        <li><a href="#services" class="footer-link">Services</a></li>
+                        <li><a href="#departments" class="footer-link">Departments</a></li>
+                        <li><a href="#events" class="footer-link">Events</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Departments</h3>
+                    <ul>
+                        <li><a href="#department-bible-study">Bible Study</a></li>
+                        <li><a href="#department-praise-worship">Praise and Worship</a></li>
+                        <li><a href="#department-prayer-committee">Prayer Committee</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Church Street, City, Country</p>
+                    <p><i class="fas fa-phone"></i> +123 456 7890</p>
+                    <p><i class="fas fa-envelope"></i> info@soundofrevival.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Sound of Revival. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Database simulation using localStorage
+        const database = {
+            members: JSON.parse(localStorage.getItem('members')) || [],
+            posts: JSON.parse(localStorage.getItem('posts')) || [],
+            currentUser: JSON.parse(localStorage.getItem('currentUser')) || null,
+            
+            saveData: function() {
+                localStorage.setItem('members', JSON.stringify(this.members));
+                localStorage.setItem('posts', JSON.stringify(this.posts));
+                localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+            },
+            
+            addMember: function(member) {
+                member.id = Date.now().toString();
+                member.joinDate = new Date().toISOString().split('T')[0];
+                this.members.push(member);
+                this.saveData();
+                return member;
+            },
+            
+            getMemberByEmail: function(email) {
+                return this.members.find(member => member.email === email);
+            },
+            
+            getMemberById: function(id) {
+                return this.members.find(member => member.id === id);
+            },
+            
+            updateMember: function(id, updatedData) {
+                const index = this.members.findIndex(member => member.id === id);
+                if (index !== -1) {
+                    this.members[index] = { ...this.members[index], ...updatedData };
+                    this.saveData();
+                    return this.members[index];
+                }
+                return null;
+            },
+            
+            deleteMember: function(id) {
+                const index = this.members.findIndex(member => member.id === id);
+                if (index !== -1) {
+                    const deleted = this.members.splice(index, 1)[0];
+                    this.saveData();
+                    return deleted;
+                }
+                return null;
+            },
+            
+            getMembersByDepartment: function(department) {
+                return this.members.filter(member => member.department === department);
+            },
+            
+            getDepartmentLeader: function(department) {
+                return this.members.find(member => 
+                    member.department === department && 
+                    (member.role === 'department-leader' || member.role === 'admin')
+                );
+            },
+            
+            assignDepartmentLeader: function(department, memberId) {
+                // Remove existing leader for this department
+                this.members.forEach(member => {
+                    if (member.department === department && member.role === 'department-leader') {
+                        member.role = 'member';
+                    }
+                });
+                
+                // Assign new leader
+                const member = this.getMemberById(memberId);
+                if (member && member.department === department) {
+                    member.role = 'department-leader';
+                    this.saveData();
+                    return member;
+                }
+                return null;
+            },
+            
+            addPost: function(post) {
+                post.id = Date.now().toString();
+                post.date = new Date().toISOString().split('T')[0];
+                post.author = database.currentUser.fullName;
+                this.posts.push(post);
+                this.saveData();
+                return post;
+            },
+            
+            updatePost: function(id, updatedData) {
+                const index = this.posts.findIndex(post => post.id === id);
+                if (index !== -1) {
+                    this.posts[index] = { ...this.posts[index], ...updatedData };
+                    this.saveData();
+                    return this.posts[index];
+                }
+                return null;
+            },
+            
+            deletePost: function(id) {
+                const index = this.posts.findIndex(post => post.id === id);
+                if (index !== -1) {
+                    const deleted = this.posts.splice(index, 1)[0];
+                    this.saveData();
+                    return deleted;
+                }
+                return null;
+            },
+            
+            getPostsByDepartment: function(department) {
+                return this.posts.filter(post => post.department === department)
+                    .sort((a, b) => new Date(b.date) - new Date(a.date));
+            },
+            
+            authenticate: function(email, password) {
+                const member = this.getMemberByEmail(email);
+                if (member && member.password === password) {
+                    this.currentUser = member;
+                    this.saveData();
+                    return member;
+                }
+                return null;
+            },
+            
+            logout: function() {
+                this.currentUser = null;
+                this.saveData();
+            }
+        };
+
+        // Initialize admin if database is empty
+        if (database.members.length === 0) {
+            database.addMember({
+                fullName: 'Super Admin',
+                email: 'admin@soundofrevival.com',
+                phone: '+1234567890',
+                password: 'admin123',
+                department: 'praise-worship',
+                role: 'admin',
+                message: 'System administrator'
+            });
+        }
+
+        // Initialize sample posts if empty
+        if (database.posts.length === 0) {
+            database.addPost({
+                title: 'Welcome to Bible Study',
+                content: 'We are excited to announce our new Bible study series starting next week. We will be exploring the book of Romans and discussing how to apply its teachings to our daily lives. Join us every Wednesday at 7:00 PM in the main hall.',
+                department: 'bible-study'
+            });
+            
+            database.addPost({
+                title: 'New Worship Songs',
+                content: 'Our worship team has been working on some new songs that we will be introducing in our services this month. We believe these songs will help us connect with God on a deeper level. Please join us for practice on Thursday at 6:00 PM if you would like to learn these songs.',
+                department: 'praise-worship'
+            });
+            
+            database.addPost({
+                title: 'Prayer for the Community',
+                content: 'This month, our prayer committee will be focusing on praying for our local community. We have seen a need for spiritual revival in our neighborhood, and we believe that prayer is the foundation for this revival. Join us every Tuesday at 6:30 PM as we pray for our community.',
+                department: 'prayer-committee'
+            });
+        }
+
+        // DOM Elements
+        const registrationForm = document.getElementById('registrationForm');
+        const loginForm = document.getElementById('loginForm');
+        const contactForm = document.getElementById('contactForm');
+        const addMemberForm = document.getElementById('addMemberForm');
+        const editMemberForm = document.getElementById('editMemberForm');
+        const assignLeaderForm = document.getElementById('assignLeaderForm');
+        const createPostForm = document.getElementById('createPostForm');
+        const editPostForm = document.getElementById('editPostForm');
+        
+        // Modals
+        const addMemberModal = document.getElementById('addMemberModal');
+        const editMemberModal = document.getElementById('editMemberModal');
+        const assignLeaderModal = document.getElementById('assignLeaderModal');
+        const editPostModal = document.getElementById('editPostModal');
+        
+        // Buttons
+        const addMemberBtn = document.getElementById('addMemberBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const logoutMemberBtn = document.getElementById('logoutMemberBtn');
+        const editProfileBtn = document.getElementById('editProfileBtn');
+        const viewDepartmentPostsBtn = document.getElementById('viewDepartmentPostsBtn');
+        
+        // Close modal buttons
+        const closeModals = document.querySelectorAll('.close-modal');
+        const cancelAddMember = document.getElementById('cancelAddMember');
+        const cancelEditMember = document.getElementById('cancelEditMember');
+        const cancelAssignLeader = document.getElementById('cancelAssignLeader');
+        const cancelEditPost = document.getElementById('cancelEditPost');
+        
+        // Toast notification
+        const toast = document.getElementById('toast');
+        
+        // Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const footerLinks = document.querySelectorAll('.footer-link');
+        const sections = document.querySelectorAll('section');
+        
+        // Dashboard sections
+        const dashboardSections = document.querySelectorAll('.dashboard-section');
+        const sidebarLinks = document.querySelectorAll('.sidebar a[data-section]');
+        
+        // Event Listeners
+        registrationForm.addEventListener('submit', handleRegistration);
+        loginForm.addEventListener('submit', handleLogin);
+        contactForm.addEventListener('submit', handleContact);
+        addMemberForm.addEventListener('submit', handleAddMember);
+        editMemberForm.addEventListener('submit', handleEditMember);
+        assignLeaderForm.addEventListener('submit', handleAssignLeader);
+        createPostForm.addEventListener('submit', handleCreatePost);
+        editPostForm.addEventListener('submit', handleEditPost);
+        
+        // Button event listeners
+        addMemberBtn.addEventListener('click', () => showModal(addMemberModal));
+        resetBtn.addEventListener('click', () => registrationForm.reset());
+        logoutBtn.addEventListener('click', handleLogout);
+        logoutMemberBtn.addEventListener('click', handleLogout);
+        editProfileBtn.addEventListener('click', () => showToast('Profile editing will be implemented soon'));
+        
+        // Close modal event listeners
+        closeModals.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const modal = e.target.closest('.modal');
+                hideModal(modal);
+            });
+        });
+        
+        cancelAddMember.addEventListener('click', () => hideModal(addMemberModal));
+        cancelEditMember.addEventListener('click', () => hideModal(editMemberModal));
+        cancelAssignLeader.addEventListener('click', () => hideModal(assignLeaderModal));
+        cancelEditPost.addEventListener('click', () => hideModal(editPostModal));
+        
+        // Department card links
+        document.querySelectorAll('.department-card a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                showSection(targetId.substring(1));
+                loadDepartmentPosts(targetId.substring(1));
+            });
+        });
+        
+        // Footer department links
+        document.querySelectorAll('.footer-section a[href^="#department-"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                showSection(targetId.substring(1));
+                loadDepartmentPosts(targetId.substring(1));
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                if (targetId === '#login') {
+                    showSection('login');
+                } else if (targetId === '#register') {
+                    showSection('register');
+                } else if (targetId.startsWith('#')) {
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Footer links
+        footerLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    if (targetId.startsWith('#department-')) {
+                        showSection(targetId.substring(1));
+                        loadDepartmentPosts(targetId.substring(1));
+                    } else {
+                        const targetSection = document.querySelector(targetId);
+                        if (targetSection) {
+                            window.scrollTo({
+                                top: targetSection.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                }
+            });
+        });
+        
+        // Dashboard navigation
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSection = link.getAttribute('data-section');
+                
+                // Update active link
+                sidebarLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                // Show corresponding section
+                dashboardSections.forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById(`${targetSection}-section`).style.display = 'block';
+                
+                // Load posts if posts section
+                if (targetSection === 'posts') {
+                    loadAllPosts();
+                }
+            });
+        });
+        
+        // Assign leader buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('assign-leader-btn')) {
+                const department = e.target.getAttribute('data-department');
+                showAssignLeaderModal(department);
+            }
+        });
+        
+        // Functions
+        function showSection(sectionId) {
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+        
+        function showModal(modal) {
+            modal.style.display = 'flex';
+        }
+        
+        function hideModal(modal) {
+            modal.style.display = 'none';
+        }
+        
+        function showToast(message, isError = false) {
+            toast.textContent = message;
+            toast.className = 'toast show';
+            if (isError) {
+                toast.classList.add('error');
+            }
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        function handleRegistration(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(registrationForm);
+            const fullName = formData.get('fullName');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const password = formData.get('password');
+            const confirmPassword = formData.get('confirmPassword');
+            const department = formData.get('department');
+            const message = formData.get('message');
+            
+            // Validation
+            if (password !== confirmPassword) {
+                showToast('Passwords do not match', true);
+                return;
+            }
+            
+            // Check if user already exists
+            if (database.getMemberByEmail(email)) {
+                showToast('An account with this email already exists', true);
+                return;
+            }
+            
+            // Add new member
+            const newMember = database.addMember({
+                fullName,
+                email,
+                phone,
+                password,
+                department,
+                message,
+                role: 'member'
+            });
+            
+            showToast('Registration successful! You can now login.');
+            registrationForm.reset();
+            
+            // Redirect to login after a short delay
+            setTimeout(() => {
+                showSection('login');
+            }, 2000);
+        }
+        
+        function handleLogin(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(loginForm);
+            const email = formData.get('loginEmail');
+            const password = formData.get('loginPassword');
+            
+            // Authenticate user
+            const user = database.authenticate(email, password);
+            
+            if (user) {
+                showToast(`Welcome back, ${user.fullName}!`);
+                loginForm.reset();
+                
+                // Show appropriate dashboard based on role
+                if (user.role === 'admin' || user.role === 'department-leader') {
+                    showSection('admin-dashboard');
+                    updateAdminDashboard();
+                } else {
+                    showSection('member-dashboard');
+                    updateMemberDashboard();
+                }
+            } else {
+                showToast('Invalid email or password', true);
+            }
+        }
+        
+        function handleContact(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const name = formData.get('contactName');
+            const email = formData.get('contactEmail');
+            const message = formData.get('contactMessage');
+            
+            // In a real application, this would send the data to a server
+            showToast('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        }
+        
+        function handleLogout() {
+            database.logout();
+            showToast('You have been logged out');
+            showSection('home');
+        }
+        
+        function handleAddMember(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(addMemberForm);
+            const fullName = formData.get('newMemberName');
+            const email = formData.get('newMemberEmail');
+            const phone = formData.get('newMemberPhone');
+            const department = formData.get('newMemberDepartment');
+            const role = formData.get('newMemberRole');
+            
+            // Check if user already exists
+            if (database.getMemberByEmail(email)) {
+                showToast('A member with this email already exists', true);
+                return;
+            }
+            
+            // Add new member
+            const newMember = database.addMember({
+                fullName,
+                email,
+                phone,
+                password: 'password123', // Default password for admin-added members
+                department,
+                role,
+                message: 'Added by admin'
+            });
+            
+            showToast(`Member ${fullName} has been added successfully`);
+            addMemberForm.reset();
+            hideModal(addMemberModal);
+            updateAdminDashboard();
+        }
+        
+        function handleEditMember(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(editMemberForm);
+            const id = formData.get('editMemberId');
+            const fullName = formData.get('editMemberName');
+            const email = formData.get('editMemberEmail');
+            const phone = formData.get('editMemberPhone');
+            const department = formData.get('editMemberDepartment');
+            const role = formData.get('editMemberRole');
+            
+            // Check if email is already used by another member
+            const existingMember = database.getMemberByEmail(email);
+            if (existingMember && existingMember.id !== id) {
+                showToast('A member with this email already exists', true);
+                return;
+            }
+            
+            // Update member
+            const updatedMember = database.updateMember(id, {
+                fullName,
+                email,
+                phone,
+                department,
+                role
+            });
+            
+            if (updatedMember) {
+                showToast(`Member ${fullName} has been updated successfully`);
+                hideModal(editMemberModal);
+                updateAdminDashboard();
+            } else {
+                showToast('Failed to update member', true);
+            }
+        }
+        
+        function handleAssignLeader(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(assignLeaderForm);
+            const department = formData.get('leaderDepartment');
+            const memberId = formData.get('leaderSelect');
+            
+            // Assign leader
+            const leader = database.assignDepartmentLeader(department, memberId);
+            
+            if (leader) {
+                showToast(`${leader.fullName} has been assigned as the ${formatDepartment(department)} leader`);
+                hideModal(assignLeaderModal);
+                updateAdminDashboard();
+            } else {
+                showToast('Failed to assign leader', true);
+            }
+        }
+        
+        function handleCreatePost(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(createPostForm);
+            const department = formData.get('postDepartment');
+            const title = formData.get('postTitle');
+            const content = formData.get('postContent');
+            
+            // Check if user is authorized to post for this department
+            if (database.currentUser.role !== 'admin' && 
+                database.currentUser.department !== department) {
+                showToast('You are not authorized to post for this department', true);
+                return;
+            }
+            
+            // Create post
+            const newPost = database.addPost({
+                department,
+                title,
+                content
+            });
+            
+            if (newPost) {
+                showToast('Post created successfully');
+                createPostForm.reset();
+                loadAllPosts();
+            } else {
+                showToast('Failed to create post', true);
+            }
+        }
+        
+        function handleEditPost(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(editPostForm);
+            const id = formData.get('editPostId');
+            const title = formData.get('editPostTitle');
+            const content = formData.get('editPostContent');
+            
+            // Update post
+            const updatedPost = database.updatePost(id, {
+                title,
+                content
+            });
+            
+            if (updatedPost) {
+                showToast('Post updated successfully');
+                hideModal(editPostModal);
+                loadAllPosts();
+            } else {
+                showToast('Failed to update post', true);
+            }
+        }
+        
+        function showEditMemberModal(memberId) {
+            const member = database.getMemberById(memberId);
+            if (!member) return;
+            
+            // Populate form with member data
+            document.getElementById('editMemberId').value = member.id;
+            document.getElementById('editMemberName').value = member.fullName;
+            document.getElementById('editMemberEmail').value = member.email;
+            document.getElementById('editMemberPhone').value = member.phone;
+            document.getElementById('editMemberDepartment').value = member.department;
+            document.getElementById('editMemberRole').value = member.role;
+            
+            // Show modal
+            showModal(editMemberModal);
+        }
+        
+        function showAssignLeaderModal(department) {
+            // Set department in form
+            document.getElementById('leaderDepartment').value = department;
+            
+            // Populate select with department members
+            const leaderSelect = document.getElementById('leaderSelect');
+            leaderSelect.innerHTML = '';
+            
+            const departmentMembers = database.getMembersByDepartment(department);
+            departmentMembers.forEach(member => {
+                const option = document.createElement('option');
+                option.value = member.id;
+                option.textContent = member.fullName;
+                leaderSelect.appendChild(option);
+            });
+            
+            // Show modal
+            showModal(assignLeaderModal);
+        }
+        
+        function showEditPostModal(postId) {
+            const post = database.posts.find(p => p.id === postId);
+            if (!post) return;
+            
+            // Populate form with post data
+            document.getElementById('editPostId').value = post.id;
+            document.getElementById('editPostTitle').value = post.title;
+            document.getElementById('editPostContent').value = post.content;
+            
+            // Show modal
+            showModal(editPostModal);
+        }
+        
+        function updateAdminDashboard() {
+            // Update stats
+            document.getElementById('totalMembers').textContent = database.members.length;
+            document.getElementById('bibleStudyCount').textContent = database.getMembersByDepartment('bible-study').length;
+            document.getElementById('praiseWorshipCount').textContent = database.getMembersByDepartment('praise-worship').length;
+            document.getElementById('prayerCommitteeCount').textContent = database.getMembersByDepartment('prayer-committee').length;
+            
+            // Update department member counts
+            document.getElementById('bibleStudyMembers').textContent = database.getMembersByDepartment('bible-study').length;
+            document.getElementById('praiseWorshipMembers').textContent = database.getMembersByDepartment('praise-worship').length;
+            document.getElementById('prayerCommitteeMembers').textContent = database.getMembersByDepartment('prayer-committee').length;
+            
+            // Update department leaders
+            const bibleStudyLeader = database.getDepartmentLeader('bible-study');
+            const praiseWorshipLeader = database.getDepartmentLeader('praise-worship');
+            const prayerCommitteeLeader = database.getDepartmentLeader('prayer-committee');
+            
+            document.getElementById('bibleStudyLeader').textContent = bibleStudyLeader ? bibleStudyLeader.fullName : 'Not assigned';
+            document.getElementById('praiseWorshipLeader').textContent = praiseWorshipLeader ? praiseWorshipLeader.fullName : 'Not assigned';
+            document.getElementById('prayerCommitteeLeader').textContent = prayerCommitteeLeader ? prayerCommitteeLeader.fullName : 'Not assigned';
+            
+            // Update recent members table
+            const recentMembersTable = document.getElementById('recentMembersTable');
+            recentMembersTable.innerHTML = '';
+            
+            // Sort members by join date (descending) and get the 5 most recent
+            const sortedMembers = [...database.members].sort((a, b) => new Date(b.joinDate) - new Date(a.joinDate)).slice(0, 5);
+            
+            sortedMembers.forEach(member => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${member.fullName}</td>
+                    <td>${member.email}</td>
+                    <td>${formatDepartment(member.department)}</td>
+                    <td>${member.joinDate}</td>
+                `;
+                recentMembersTable.appendChild(row);
+            });
+            
+            // Update all members table
+            const allMembersTable = document.getElementById('allMembersTable');
+            allMembersTable.innerHTML = '';
+            
+            database.members.forEach(member => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${member.fullName}</td>
+                    <td>${member.email}</td>
+                    <td>${member.phone}</td>
+                    <td>${formatDepartment(member.department)}</td>
+                    <td>${formatRole(member.role)}</td>
+                    <td>${member.joinDate}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="edit-btn" data-id="${member.id}">Edit</button>
+                            <button class="delete-btn" data-id="${member.id}">Delete</button>
+                        </div>
+                    </td>
+                `;
+                allMembersTable.appendChild(row);
+            });
+            
+            // Add event listeners to edit and delete buttons
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const memberId = e.target.getAttribute('data-id');
+                    showEditMemberModal(memberId);
+                });
+            });
+            
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const memberId = e.target.getAttribute('data-id');
+                    if (confirm('Are you sure you want to delete this member?')) {
+                        database.deleteMember(memberId);
+                        showToast('Member deleted successfully');
+                        updateAdminDashboard();
+                    }
+                });
+            });
+        }
+        
+        function updateMemberDashboard() {
+            if (!database.currentUser) return;
+            
+            // Update member information
+            document.getElementById('memberName').textContent = database.currentUser.fullName;
+            document.getElementById('memberEmail').textContent = database.currentUser.email;
+            document.getElementById('memberPhone').textContent = database.currentUser.phone;
+            document.getElementById('memberDepartment').textContent = formatDepartment(database.currentUser.department);
+            document.getElementById('memberJoinDate').textContent = database.currentUser.joinDate;
+            
+            // Update department information
+            const departmentInfo = document.getElementById('departmentInfo');
+            const department = database.currentUser.department;
+            
+            switch (department) {
+                case 'bible-study':
+                    departmentInfo.innerHTML = `
+                        <h4>Bible Study Department</h4>
+                        <p>Our Bible Study department meets every Wednesday at 7:00 PM. We explore various books of the Bible and discuss how to apply biblical principles to our daily lives.</p>
+                        <p>Next meeting: July 12, 2023 - Study of Romans Chapter 5</p>
+                    `;
+                    break;
+                case 'praise-worship':
+                    departmentInfo.innerHTML = `
+                        <h4>Praise and Worship Department</h4>
+                        <p>Our Praise and Worship team leads the congregation in worship during our services. We practice every Thursday at 6:00 PM and Sunday at 8:00 AM before the service.</p>
+                        <p>Next practice: July 13, 2023 - Preparation for Sunday Service</p>
+                    `;
+                    break;
+                case 'prayer-committee':
+                    departmentInfo.innerHTML = `
+                        <h4>Prayer Committee</h4>
+                        <p>Our Prayer Committee meets every Tuesday at 6:30 PM to pray for our church, community, and specific needs. We also have a prayer chain for urgent requests.</p>
+                        <p>Next meeting: July 11, 2023 - Prayer for upcoming events</p>
+                    `;
+                    break;
+                default:
+                    departmentInfo.innerHTML = `<p>Department information will be updated soon.</p>`;
+            }
+            
+            // Set up view department posts button
+            viewDepartmentPostsBtn.addEventListener('click', () => {
+                const departmentSectionId = `department-${department}`;
+                showSection(departmentSectionId);
+                loadDepartmentPosts(departmentSectionId);
+            });
+        }
+        
+        function loadDepartmentPosts(departmentSectionId) {
+            const department = departmentSectionId.replace('department-', '');
+            const postsContainer = document.getElementById(`${department}-posts`);
+            
+            if (!postsContainer) return;
+            
+            // Clear existing content
+            postsContainer.innerHTML = '';
+            
+            // Get posts for this department
+            const posts = database.getPostsByDepartment(department);
+            
+            if (posts.length === 0) {
+                postsContainer.innerHTML = '<p>No posts available for this department yet.</p>';
+                return;
+            }
+            
+            // Create post elements
+            posts.forEach(post => {
+                const postCard = document.createElement('div');
+                postCard.className = 'post-card';
+                
+                // Check if current user can edit this post
+                const canEdit = database.currentUser && (
+                    database.currentUser.role === 'admin' || 
+                    (database.currentUser.role === 'department-leader' && database.currentUser.department === department)
+                );
+                
+                postCard.innerHTML = `
+                    <div class="post-header">
+                        <div>
+                            <h3 class="post-title">${post.title}</h3>
+                            <div class="post-meta">
+                                <span><i class="fas fa-user"></i> ${post.author}</span>
+                                <span><i class="fas fa-calendar"></i> ${post.date}</span>
+                            </div>
+                        </div>
+                        ${canEdit ? `
+                            <div class="post-actions">
+                                <button class="edit-post-btn" data-id="${post.id}">Edit</button>
+                                <button class="delete-post-btn" data-id="${post.id}">Delete</button>
+                            </div>
+                        ` : ''}
+                    </div>
+                    <div class="post-content">${post.content}</div>
+                `;
+                
+                postsContainer.appendChild(postCard);
+            });
+            
+            // Add event listeners to edit and delete buttons
+            if (database.currentUser && (
+                database.currentUser.role === 'admin' || 
+                (database.currentUser.role === 'department-leader' && database.currentUser.department === department)
+            )) {
+                document.querySelectorAll('.edit-post-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const postId = e.target.getAttribute('data-id');
+                        showEditPostModal(postId);
+                    });
+                });
+                
+                document.querySelectorAll('.delete-post-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const postId = e.target.getAttribute('data-id');
+                        if (confirm('Are you sure you want to delete this post?')) {
+                            database.deletePost(postId);
+                            showToast('Post deleted successfully');
+                            loadDepartmentPosts(departmentSectionId);
+                        }
+                    });
+                });
+            }
+        }
+        
+        function loadAllPosts() {
+            const allPostsContainer = document.getElementById('allPosts');
+            
+            if (!allPostsContainer) return;
+            
+            // Clear existing content
+            allPostsContainer.innerHTML = '';
+            
+            // Get all posts
+            const posts = [...database.posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            if (posts.length === 0) {
+                allPostsContainer.innerHTML = '<p>No posts available yet.</p>';
+                return;
+            }
+            
+            // Create post elements
+            posts.forEach(post => {
+                const postCard = document.createElement('div');
+                postCard.className = 'post-card';
+                
+                postCard.innerHTML = `
+                    <div class="post-header">
+                        <div>
+                            <h3 class="post-title">${post.title}</h3>
+                            <div class="post-meta">
+                                <span><i class="fas fa-user"></i> ${post.author}</span>
+                                <span><i class="fas fa-users"></i> ${formatDepartment(post.department)}</span>
+                                <span><i class="fas fa-calendar"></i> ${post.date}</span>
+                            </div>
+                        </div>
+                        <div class="post-actions">
+                            <button class="edit-post-btn" data-id="${post.id}">Edit</button>
+                            <button class="delete-post-btn" data-id="${post.id}">Delete</button>
+                        </div>
+                    </div>
+                    <div class="post-content">${post.content}</div>
+                `;
+                
+                allPostsContainer.appendChild(postCard);
+            });
+            
+            // Add event listeners to edit and delete buttons
+            document.querySelectorAll('.edit-post-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const postId = e.target.getAttribute('data-id');
+                    showEditPostModal(postId);
+                });
+            });
+            
+            document.querySelectorAll('.delete-post-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const postId = e.target.getAttribute('data-id');
+                    if (confirm('Are you sure you want to delete this post?')) {
+                        database.deletePost(postId);
+                        showToast('Post deleted successfully');
+                        loadAllPosts();
+                    }
+                });
+            });
+        }
+        
+        function formatDepartment(department) {
+            switch (department) {
+                case 'bible-study':
+                    return 'Bible Study';
+                case 'praise-worship':
+                    return 'Praise and Worship';
+                case 'prayer-committee':
+                    return 'Prayer Committee';
+                default:
+                    return department;
+            }
+        }
+        
+        function formatRole(role) {
+            switch (role) {
+                case 'admin':
+                    return 'Admin';
+                case 'department-leader':
+                    return 'Department Leader';
+                case 'member':
+                    return 'Member';
+                default:
+                    return role;
+            }
+        }
+        
+        // Check if user is already logged in
+        if (database.currentUser) {
+            if (database.currentUser.role === 'admin' || database.currentUser.role === 'department-leader') {
+                showSection('admin-dashboard');
+                updateAdminDashboard();
+            } else {
+                showSection('member-dashboard');
+                updateMemberDashboard();
+            }
+        }
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                hideModal(e.target);
+            }
+        });
+    </script>
+</body>
+</html>
